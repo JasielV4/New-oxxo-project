@@ -1,4 +1,3 @@
-import { combineLatest } from "rxjs";
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Manager } from "src/managers/entities/manager.entity";
 import { Region } from "src/regions/entities/region.entity";
@@ -11,11 +10,13 @@ export class Location {
     @Column('text')
     locationName: string;
     @Column('text')
-    locationAdress: string;
+    locationAddress: string;
     @Column('simple-array')
     locationLatLng: number[];
 
-    @OneToOne(() => Manager)
+    @OneToOne(() => Manager, {
+        eager: true,
+    })
     @JoinColumn({
         name: "managerId"
     })

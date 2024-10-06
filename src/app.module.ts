@@ -36,7 +36,7 @@ import { EXPIRES_IN, JWT_KEY } from './auth/constants/jwt.constanst';
     RegionsModule,
     AuthModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule { }
