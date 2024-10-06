@@ -1,14 +1,15 @@
 import { Product } from "src/products/entities/product.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
-
-@Entity()   
+@Entity()
 export class Provider {
     @PrimaryGeneratedColumn('uuid')
     providerId: string;
     @Column('text')
     providerName: string;
-    @Column('text')
+    @Column('text', {
+        unique: true
+    })
     providerEmail: string;
     @Column({
         type: "text",
