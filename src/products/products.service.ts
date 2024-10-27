@@ -78,7 +78,7 @@ export class ProductsService {
     })
     if (!productToUpdate) throw new NotFoundException()
     this.productRepository.save(productToUpdate);
-    return productToUpdate
+    return productToUpdate;
   }
 
   remove(id: string) {
@@ -87,7 +87,7 @@ export class ProductsService {
       productId: id,
     })
     return {
-      message: "objeto con id ${id} eliminado"
+      message: `objeto con id ${id} eliminado`
     }
   }
 }

@@ -19,16 +19,16 @@ export class EmployeesService {
     return employee;
   }
 
+  findAll() {
+    return this.employeeRepository.find();
+  }
+
   findByLocation(id: number) {
     return this.employeeRepository.findBy({
       location: {
         locationId: id
       }
     })
-  }
-
-  findAll() {
-    return this.employeeRepository.find();
   }
 
   findOne(id: string) {
@@ -52,7 +52,7 @@ export class EmployeesService {
       employeeId: id
     })
     return {
-      message: ""
+      message: "Employee deleted"
     }
   }
 }
