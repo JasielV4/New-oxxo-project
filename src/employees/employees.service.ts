@@ -1,11 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
 import { UpdateEmployeeDto } from './dto/update-employee.dto';
-import { v4 as uuid } from 'uuid';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Employee } from './entities/employee.entity';
 import { Repository } from 'typeorm';
-import { MESSAGES } from '@nestjs/core/constants';
 
 @Injectable()
 export class EmployeesService {
@@ -22,11 +20,11 @@ export class EmployeesService {
   findAll() {
     return this.employeeRepository.find({
       relations: {
-        location: true
+        location: true,
+        user: true,
       }
     });
   }
-
 
   findByLocation(id: number) {
     return this.employeeRepository.findBy({
@@ -43,6 +41,7 @@ export class EmployeesService {
       },
       relations: {
         location: true,
+        user: true,
       }
     })
     return employee;
