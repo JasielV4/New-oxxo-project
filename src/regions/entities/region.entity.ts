@@ -1,7 +1,5 @@
-
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Location } from "src/locations/entities/location.entity";
-
 
 @Entity()
 export class Region {
@@ -11,6 +9,7 @@ export class Region {
         type: 'text',
         unique: true    
     })
+    
     regionName: string;
     @Column('simple-array')
     regionStates: string[];

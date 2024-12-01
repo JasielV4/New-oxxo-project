@@ -8,12 +8,24 @@ import { ApiAuth } from 'src/auth/decorators/api.decorator';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiAuth()
-@ApiTags('Managers')
+@ApiTags("Managers")
 @Controller('managers')
 export class ManagersController {
-  constructor(private readonly managersService: ManagersService) { }
+  constructor(private readonly managersService: ManagersService) {}
 
   @Auth()
+  @ApiResponse({
+    status: 201,
+    example: {
+      managerId: "UUID",
+      managerFullName: "Jorge Jasiel",
+      managerSalary: 10000,
+      managerEmail: "jasielv@gmail.com",
+      managerPhoneNumber: "4191230272"
+
+    } as Manager
+  })
+
   @Post()
   create(@Body() createManagerDto: CreateManagerDto) {
     return this.managersService.create(createManagerDto);
@@ -21,8 +33,10 @@ export class ManagersController {
 
   @Auth()
   @Get()
-  findAll() {
-    return this.managersService.findAll();
+  async findAll() {
+    const managers = await this.managersService.findAll();
+    console.log(managers); 
+    return managers
   }
 
   @Auth()

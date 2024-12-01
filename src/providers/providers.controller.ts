@@ -24,9 +24,9 @@ export class ProvidersController {
     status: 201,
     example: {
       providerId: "UUID",
-      providerName: "Mau",
+      providerName: "Jasiel",
       providerEmail: "provider@gmail.com",
-      providerPhoneNumber: "4613027231"
+      providerPhoneNumber: "4191230272"
 
     } as Provider
   })
@@ -58,6 +58,7 @@ export class ProvidersController {
   @Auth(ROLES.MANAGER)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateProviderDto: UpdateProviderDto) {
+    console.log(updateProviderDto)
     return this.providersService.update(id, updateProviderDto);
   }
 
